@@ -6,7 +6,8 @@
 @theme{
   --font-poppins:Poppins, sans-serif;
   --font-montserrat:Montserrat, sans-serif;
-  --color-brown_light: #B88E2F;
+  --color-brown_dark: #B88E2F;
+  --color-brown_light: #FFF3E3;
 }
 
 @theme inline {
@@ -125,6 +126,9 @@
   }
   .hoverEffect {
     @apply transition-all duration-300 ease-in-out;
+  }
+  button {
+    @apply cursor-pointer;
   }
 }
 
