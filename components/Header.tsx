@@ -1,12 +1,19 @@
-import CartIcon from "./CartIcon";
-import Container from "./Container"
-import HeartIcon from "./HeartIcon";
-import Logo from "./Logo";
-import MobileMenu from "./MobileMenu";
-import Navbar from "./Navbar";
-import SearchIcon from "./SearchIcon";
+// import { currentUser } from '@clerk/nextjs/server';
+import {
+  CartIcon,
+  Container,
+  HeartIcon,
+  Logo,
+  MobileMenu,
+  Navbar,
+  SearchIcon,
+  SignIn,
+} from './index';
+import { ClerkLoaded, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
-const Header = () => {
+const Header = async () => {
+  // const user = await currentUser();
+
   return (
     <header className="py-3 md:py-6 bg-white border-b">
       <Container className="flex justify-between items-center">
@@ -19,9 +26,18 @@ const Header = () => {
           <SearchIcon />
           <HeartIcon />
           <CartIcon />
+          <ClerkLoaded>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <SignIn />
+            </SignedOut>
+            
+          </ClerkLoaded>
         </div>
       </Container>
     </header>
   );
-}
-export default Header
+};
+export default Header;

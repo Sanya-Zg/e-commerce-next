@@ -1,5 +1,5 @@
-import Container from '@/components/Container';
-import { Button } from '@/components/ui/button';
+import { Container } from '@/components/index';
+import { Button } from '@/components/ui';
 
 const Home = () => {
   return (

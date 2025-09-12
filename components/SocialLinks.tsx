@@ -1,6 +1,6 @@
 'use client'
 import { LuYoutube, LuGithub, LuLinkedin, LuFacebook } from 'react-icons/lu';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui';
 import Link from 'next/link';
 
 export const socialLinks = [

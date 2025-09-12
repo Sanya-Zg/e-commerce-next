@@ -1,9 +1,10 @@
+'use client';
+
 import { X } from "lucide-react";
-import Logo from "./Logo";
+import {Logo, SocialLinks} from "@/components/index";
 import { headerMenu } from "@/app/constans/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import SocialLinks from "./SocialLinks";
 
 interface PropsMenu {
   isOpen: boolean;
