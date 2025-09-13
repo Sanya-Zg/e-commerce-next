@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Poppins, Montserrat } from 'next/font/google';
 
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import {Header, Footer} from "@/components/index";
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins"
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ["700"],
+  variable: "--font-montserrat"
+})
 
 
 export const metadata: Metadata = {
@@ -18,10 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
         <body>
           <Header />
-          {children}
+          <main>{children}</main>
           <Footer />
         </body>
       </html>

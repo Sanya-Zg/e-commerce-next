@@ -10,3 +10,4 @@ export { default as SearchIcon } from './SearchIcon';
 export { default as SideBar } from './SideBar';
 export { default as SocialLinks } from './SocialLinks';
 export { default as SignIn } from './SignIn';
+export { default as MainBanner } from './MainBanner';

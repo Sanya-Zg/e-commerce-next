@@ -1,17 +1,17 @@
 'use client';
 
-import { X } from "lucide-react";
-import {Logo, SocialLinks} from "@/components/index";
-import { headerMenu } from "@/app/constans/data";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { X } from 'lucide-react';
+import { Logo, SocialLinks } from '@/components/index';
+import { headerMenu } from '@/constans/data';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface PropsMenu {
   isOpen: boolean;
   isClose: () => void;
 }
 
-const SideBar = ({isOpen, isClose}: PropsMenu) => {
+const SideBar = ({ isOpen, isClose }: PropsMenu) => {
   const pathname = usePathname();
   return (
     <aside
@@ -27,14 +27,13 @@ const SideBar = ({isOpen, isClose}: PropsMenu) => {
         <div className="flex justify-between">
           <Logo />
           <button>
-             <X
-            onClick={isClose}
-            size={30}
-            className="hover:text-white"
-            aria-label="Close menu"
-          />
+            <X
+              onClick={isClose}
+              size={30}
+              className="hover:text-white"
+              aria-label="Close menu"
+            />
           </button>
-         
         </div>
         <div className="flex flex-col gap-5 font-semibold mt-5">
           {headerMenu.map((item) => (
@@ -55,5 +54,5 @@ const SideBar = ({isOpen, isClose}: PropsMenu) => {
       </div>
     </aside>
   );
-}
-export default SideBar
+};
+export default SideBar;

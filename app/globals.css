@@ -8,6 +8,10 @@
   --font-montserrat:Montserrat, sans-serif;
   --color-brown_dark: #B88E2F;
   --color-brown_light: #FFF3E3;
+  --color-primary-text:#333333;
+  --color-secondary-text:#8C8C8C;
+  
+  --breakpoint-xs: 400px;
 }
 
 @theme inline {
@@ -56,7 +60,7 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(72.791% 0.09823 86.634);
+  --primary: oklch(0.67 0.12 83.8);
   --primary-foreground: oklch(0.421 0.095 57.708);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);

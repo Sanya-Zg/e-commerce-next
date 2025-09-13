@@ -1,12 +1,10 @@
-import { Container } from '@/components/index';
-import { Button } from '@/components/ui';
+import {Container, MainBanner} from '@/components/index';
 
 const Home = () => {
   return (
-    <Container>
-      <p>Text text</p>
-      <Button>Button</Button>
-    </Container>
+    <>
+      <MainBanner />
+    </>
   );
 };
 export default Home;
