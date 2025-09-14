@@ -4,3 +4,9 @@ export const headerMenu = [
   { title: 'About', link: '/about' },
   { title: 'Contact', link: '/contact' },
 ];
+
+export const footerHelp = [
+  { title: 'Payment Options', link: '#'},
+  { title: 'Returns', link: '#'},
+  { title: 'Privacy Policies', link: '#'}
+]

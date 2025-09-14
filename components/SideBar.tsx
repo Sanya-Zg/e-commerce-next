@@ -49,7 +49,7 @@ const SideBar = ({ isOpen, isClose }: PropsMenu) => {
           ))}
         </div>
         <div className="border-t-2 mt-20 border-white/50">
-          <SocialLinks />
+          <SocialLinks className='justify-between'/>
         </div>
       </div>
     </aside>
