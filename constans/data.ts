@@ -10,3 +10,9 @@ export const footerHelp = [
   { title: 'Returns', link: '#'},
   { title: 'Privacy Policies', link: '#'}
 ]
+
+export const productCategories = [
+  { title: 'Living Room', value: 'livingroom' },
+  { title: 'Kitchen', value: 'kitchen' },
+  { title: 'Bedroom', value: 'bedroom' },
+];

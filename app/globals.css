@@ -8,9 +8,15 @@
   --font-montserrat:Montserrat, sans-serif;
   --color-brown_dark: #B88E2F;
   --color-brown_light: #FFF3E3;
-  --color-primary-text:#333333;
-  --color-secondary-text:#8C8C8C;
-  --color-gray-light:#9F9F9F;
+  --color-primary-text: #333333;
+  --color-secondary-text: #8C8C8C;
+  --color-gray-light: #9F9F9F;
+  
+  --color-gray_1: #3A3A3A;
+  --color-gray_3: #898989;
+  --color-gray_4: #B0B0B0;
+  --color-red-primary: #E97171;
+  --color-green-primary: #2EC1AC;
   
   --breakpoint-xs: 400px;
 }
@@ -137,4 +143,6 @@
     @apply cursor-pointer;
   }
 }
+
+
 

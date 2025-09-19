@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-t-[#D9D9D9]">
       <Container>
-        <div className="grid grid-cols-2 md:grid-cols-4 pt-12 pb-9.5 border-b border-b-[#D9D9D9]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 pt-12 pb-9.5 border-b border-b-[#D9D9D9]">
           <div className="flex flex-col gap-2">
             <Logo />
             <SocialLinks className="gap-8 mb-12" hoverEff={'hover:text-brown_dark'} />

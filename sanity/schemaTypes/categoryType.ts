@@ -1,6 +1,5 @@
 import { defineField, defineType } from 'sanity';
 import { TagsIcon } from '@sanity/icons';
-import { title } from 'process';
 
 export const categoryType = defineType({
   name: 'category',
@@ -43,7 +42,8 @@ export const categoryType = defineType({
       title: 'Category Image',
       type: 'image',
       options: { hotspot: true },
-    })
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     select: {
