@@ -1,18 +1,18 @@
 import AllCategories from '@/components/AllCategories';
-import { MainBanner, ProductGrid} from '@/components/index';
+import {
+  BeautifullInspiration,
+  MainBanner,
+  ProductGrid,
+} from '@/components/index';
 
 const Home = () => {
   return (
-    <>
+    <div className="flex flex-col gap-14">
       <MainBanner />
-      <div className='mt-14'>
-        <AllCategories />
-      </div>
-      <div className='mt-14'>
-        <ProductGrid />
-      </div>
-      
-    </>
+      <AllCategories />
+      <ProductGrid />
+      <BeautifullInspiration />
+    </div>
   );
 };
 export default Home;

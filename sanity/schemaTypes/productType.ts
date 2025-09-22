@@ -48,8 +48,8 @@ export const productType = defineType({
     defineField({
       name: 'categories',
       title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
+      type: 'reference',
+      to: { type: 'category' },
     }),
     defineField({
       name: 'stock',
@@ -90,19 +90,6 @@ export const productType = defineType({
       ],
     }),
     defineField({
-      name: 'sizes',
-      title: 'Available Sizes',
-      type: 'array',
-      of: [
-        {
-          type: 'string',
-          options: {
-            list: ['L', 'XL', 'XS'],
-          },
-        },
-      ],
-    }),
-    defineField({
       name: 'status',
       title: 'Product Status',
       type: 'string',
@@ -117,15 +104,28 @@ export const productType = defineType({
     defineField({
       name: 'variant',
       title: 'Product Type',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Living Room', value: 'living_room' },
-          { title: 'Kitchen', value: 'kitchen' },
-          { title: 'Bedroom', value: 'bedroom' },
-        ],
-        layout: 'radio',
-      },
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Bed', value: 'bed' },
+              { title: 'Sofa', value: 'sofa' },
+              { title: 'Table', value: 'table' },
+              { title: 'Lamp', value: 'lamp' },
+              { title: 'Kitchen', value: 'kitchen' },
+              { title: 'Chair', value: 'chair' },
+              { title: 'Accessories', value: 'accessories' },
+              { title: 'Living Room', value: 'living-room' },
+              { title: 'Bedroom', value: 'bedroom' },
+              { title: 'Dining', value: 'dining' },
+              { title: 'Office', value: 'office' },
+              { title: 'Media console', value: 'media-console' },
+            ],
+          },
+        },
+      ],
     }),
     defineField({
       name: 'isFeatured',

@@ -13,6 +13,28 @@
  */
 
 // Source: schema.json
+export type Inspiration = {
+  _id: string;
+  _type: "inspiration";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type Order = {
   _id: string;
   _type: "order";
@@ -79,13 +101,12 @@ export type Product = {
   description?: string;
   price?: number;
   discount?: number;
-  categories?: Array<{
+  categories?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
-    _key: string;
     [internalGroqTypeReferenceTo]?: "category";
-  }>;
+  };
   stock?: number;
   brand?: {
     _ref: string;
@@ -93,10 +114,9 @@ export type Product = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "brand";
   };
-  colors?: Array<"red" | "blue" | "green" | "black" | "white" | "yellow" | "purple" | "orange" | "gray" | "pink">;
-  sizes?: Array<"L" | "XL" | "XS">;
+  colors?: Array<"red" | "blue" | "brown" | "green" | "black" | "white" | "yellow" | "purple" | "orange" | "gray" | "pink">;
   status?: "new" | "sale";
-  variant?: "living_room" | "kitchen" | "bedroom";
+  variant?: Array<"bed" | "sofa" | "table" | "lamp" | "kitchen" | "chair" | "accessories" | "living-room" | "bedroom" | "dining" | "office" | "media-console">;
   isFeatured?: boolean;
 };
 
@@ -433,5 +453,5 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Order | Product | Brand | Blog | Blogcategory | BlockContent | Author | Address | Category | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Inspiration | Order | Product | Brand | Blog | Blogcategory | BlockContent | Author | Address | Category | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
