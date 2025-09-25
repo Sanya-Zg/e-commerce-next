@@ -136,7 +136,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground font-poppins max-w-[1440px] mx-auto;
   }
   .hoverEffect {
     @apply transition-all duration-300 ease-in-out;

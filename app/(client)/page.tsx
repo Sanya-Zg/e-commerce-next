@@ -1,6 +1,7 @@
 import AllCategories from '@/components/AllCategories';
 import {
   BeautifullInspiration,
+  InformComponent,
   MainBanner,
   ProductGrid,
 } from '@/components/index';
@@ -12,6 +13,7 @@ const Home = () => {
       <AllCategories />
       <ProductGrid />
       <BeautifullInspiration />
+      <InformComponent />
     </div>
   );
 };

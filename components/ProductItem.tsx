@@ -18,10 +18,10 @@ const ProductItem = ({ product }: { product: Product }) => {
       />
 
       {product.status == 'sale' && (
-        <p className="absolute top-6 right-6 text-white font-medium bg-red-primary rounded-full w-12 h-12 flex items-center justify-center group-hover:bg-red-500 hoverEffect">{`-${product.discount}%`}</p>
+        <p className="absolute top-3 md:top-6 right-3 md:right-6 text-white text-xs md:text-[16px] font-medium bg-red-primary rounded-full size-8 md:size-12 flex items-center justify-center group-hover:bg-red-500 hoverEffect">{`-${product.discount}%`}</p>
       )}
       {product.status == 'new' && (
-        <p className="absolute top-6 right-6 text-white font-medium bg-green-primary rounded-full w-12 h-12 flex items-center justify-center capitalize group-hover:bg-emerald-500 hoverEffect">
+        <p className="absolute top-3 md:top-6 right-3 md:right-6 text-white text-xs md:text-[16px] font-medium bg-green-primary rounded-full size-8 md:size-12 flex items-center justify-center capitalize group-hover:bg-emerald-500 hoverEffect">
           {product.status}
         </p>
       )}
@@ -33,7 +33,7 @@ const ProductItem = ({ product }: { product: Product }) => {
         <p className="font-medium text-gray_3 line-clamp-1 mt-2">
           {product.description}
         </p>
-        <div className='flex gap-5 justify-between mt-3'>
+        <div className='flex gap-x-3 gap-y-1 justify-between flex-wrap mt-3'>
           <Rating />
           <p className='text-[18px] text-gray-500 font-medium'>4 Reviews</p>
         </div>

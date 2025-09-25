@@ -6,9 +6,13 @@ import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Container from './Container';
+import { useAppDispatch } from '@/redux/hooks';
+import { setCategory } from '@/redux/features/categorySlice';
 
 const AllCategories = () => {
   const [categories, setCategories] = useState<Category[]>([]);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +25,11 @@ const AllCategories = () => {
     };
     fetchData();
   }, []);
+
+  const selectCategory = (cat:string) => {
+    dispatch(setCategory(cat))
+  }
+  
   return (
     <Container>
       <div className="text-[#333333]">
@@ -33,18 +42,23 @@ const AllCategories = () => {
         <div className="flex justify-center flex-row-reverse gap-5 mt-16">
           {categories.map((category) => (
             <div className="flex flex-col" key={category._id}>
-              <Image
-                src={
-                  category.image
-                    ? urlFor(category.image).url()
-                    : '/placeholder.jpg'
-                }
-                alt="Category"
-                loading="lazy"
-                width={381}
-                height={480}
-              />
-              <p className='text-center text-2xl font-semibold mt-8'>{category.title}</p>
+              <button onClick={() => selectCategory(category.title)}>
+                <Image
+                  src={
+                    category.image
+                      ? urlFor(category.image).url()
+                      : '/placeholder.jpg'
+                  }
+                  alt="Category"
+                  loading="lazy"
+                  width={381}
+                  height={480}
+                />
+              </button>
+
+              <p className="text-center text-2xl font-semibold mt-8">
+                {category.title}
+              </p>
             </div>
           ))}
         </div>

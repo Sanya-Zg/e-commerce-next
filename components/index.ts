@@ -20,4 +20,5 @@ export { default as PriceView } from './PriceView';
 export { default as PriceFormatter } from './PriceFormatter';
 export { default as AddToCartButton } from './AddToCartButton';
 export { default as BeautifullInspiration } from './BeautifullInspiration';
+export { default as InformComponent } from './InformComponent';
 
