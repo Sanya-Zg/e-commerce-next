@@ -9,9 +9,9 @@ interface Props {
 
 const PriceView = ({price=0, discount=0, className}: Props) => {
   return (
-    <div className={cn(`flex items-center mt-2  gap-x-2 ${discount && (' flex-wrap md:flex-nowrap')}`, className)}>
+    <div className={cn(`flex items-center mt-2  gap-x-2 ${discount && ('flex-wrap md:flex-nowrap')}`, className)}>
       {price && (discount > 0) && (
-        <PriceFormatter amount={price - price * discount / 100} className="font-bold text-lg text-green-primary flex justify-start"/>
+        <PriceFormatter amount={price - price * discount / 100} className={cn(`font-bold text-lg text-green-primary flex justify-start`, className)}/>
       )}
       <PriceFormatter amount={price} className={`text-lg text-green-primary ${discount && ('line-through text-gray-400  text-sm')}`}/>
     </div>

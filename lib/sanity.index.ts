@@ -1,15 +1,15 @@
+import { sanityFetch } from '@/sanity/lib/live';
+import { get_product_by_slug } from './sanity.queries';
 
-
-export const selectProducts = (categoryOne?: string) => {
-  if (categoryOne && categoryOne !== "all") {
-    return {
-      query: `*[_type == "product" && references(*[_type == "category" && title == $categoryOne]._id)]`,
-      params: { categoryOne },
-    };
+export const getProductBySlug = async (slug: string) => {
+  try {
+    const product = await sanityFetch({
+      query: get_product_by_slug,
+      params: { slug },
+    });
+    return product.data || null;
+  } catch (error) {
+    console.error('Error fetching product by ID:', error);
+    return null;
   }
-
-  return {
-    query: `*[_type == "product"]`,
-    params: {},
-  };
 };

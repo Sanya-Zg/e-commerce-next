@@ -14,7 +14,7 @@ const AddToCartButton = ({ product, className }: Props) => {
     window.alert('Sanya developer')
   }
   return (
-    <div className={cn('mt-4')}>
+    <div className={cn('mt-4', className)}>
       <Button
         className={cn('w-full text-white font-semibold', className)}
         disabled={isOutOfStock}

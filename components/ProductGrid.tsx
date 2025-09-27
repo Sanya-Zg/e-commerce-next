@@ -1,12 +1,12 @@
 'use client';
-import { getAllProducts } from '@/lib/sanity.queries';
+
 import { client } from '@/sanity/lib/client';
 import { useEffect, useState } from 'react';
 import {ProductItem} from './index';
 import { Product } from '@/sanity.types';
 import { AnimatePresence, motion } from 'motion/react';
 import { useAppSelector } from '@/redux/hooks';
-import { selectProducts } from '@/lib/sanity.index';
+import { selectProducts } from '@/lib/sanity.queries';
 
 const ProductGrid = () => {
   const [products, setProducts] = useState<Product[]>([]);

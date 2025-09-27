@@ -21,4 +21,8 @@ export { default as PriceFormatter } from './PriceFormatter';
 export { default as AddToCartButton } from './AddToCartButton';
 export { default as BeautifullInspiration } from './BeautifullInspiration';
 export { default as InformComponent } from './InformComponent';
+export { default as ImageView } from './ImageView';
+export { default as NumbersOfUnit } from './NumbersOfUnit';
+export { default as ProductCharacteristics } from './ProductCharacteristics';
+
 
