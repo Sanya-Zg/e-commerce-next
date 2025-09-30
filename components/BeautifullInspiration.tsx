@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Inspiration } from '@/sanity.types';
 import { client } from '@/sanity/lib/client';
-import { getAllInspirations } from '@/lib/sanity.queries';
+import { getAllInspirations } from '@/sanity/queries/sanity.queries';
 import { urlFor } from '@/sanity/lib/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';

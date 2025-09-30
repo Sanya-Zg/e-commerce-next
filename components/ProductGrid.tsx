@@ -2,17 +2,22 @@
 
 import { client } from '@/sanity/lib/client';
 import { useEffect, useState } from 'react';
-import {ProductItem} from './index';
+import { ProductItem } from './index';
 import { Product } from '@/sanity.types';
 import { AnimatePresence, motion } from 'motion/react';
-import { useAppSelector } from '@/redux/hooks';
-import { selectProducts } from '@/lib/sanity.queries';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { selectProducts } from '@/sanity/queries/sanity.queries';
+import { setCategory } from '@/redux/features/categorySlice';
 
 const ProductGrid = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const selectedCategory = useAppSelector((state) => state.category.categoryValue);
+  const dispatch = useAppDispatch();
+
+  const selectedCategory = useAppSelector(
+    (state) => state.category.categoryValue
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -22,18 +27,30 @@ const ProductGrid = () => {
         const res = await client.fetch(query, params);
         setProducts(res);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
     };
     fetchData();
   }, [selectedCategory]);
+
+  const handleAllProducts = () => {
+    dispatch(setCategory('all'));
+  };
   return (
-    <section className='px-6 sm:px-15 lg:px-[102px]'>
+    <section className="px-6 sm:px-15 lg:px-[102px]">
       <h2 className="text-[40px] text-center font-bold capitalize">
-        Our products
+        {selectedCategory ? selectedCategory : 'all'} products
       </h2>
+      {selectedCategory !== 'all' && (
+        <button
+          className="font-bold text-2xl text-brown_dark underline"
+          onClick={handleAllProducts}
+        >
+          All Products
+        </button>
+      )}
       <div>
         {loading ? (
           <div className="flex justify-center items-center h-[200px] gap-4">
@@ -53,7 +70,7 @@ const ProductGrid = () => {
                       initial={{ opacity: 0.2 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className='flex justify-center'
+                      className="flex justify-center"
                     >
                       <ProductItem product={product} />
                     </motion.div>

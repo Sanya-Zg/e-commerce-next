@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className="font-semibold hidden md:flex justify-between md:gap-10 lg:gap-19 w-max-5xl shrink">
+    <nav className="font-semibold hidden md:flex justify-between md:gap-10 lg:gap-15 w-max-5xl shrink">
       {headerMenu.map((item) => (
         <Link
           href={item.link}

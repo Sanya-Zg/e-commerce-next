@@ -24,5 +24,7 @@ export { default as InformComponent } from './InformComponent';
 export { default as ImageView } from './ImageView';
 export { default as NumbersOfUnit } from './NumbersOfUnit';
 export { default as ProductCharacteristics } from './ProductCharacteristics';
+export { default as Shop } from './Shop';
+export { default as NoProductAvailable } from './NoProductAvailable';
 
 

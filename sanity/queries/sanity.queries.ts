@@ -33,3 +33,7 @@ export const BRAND_QUERY =
   defineQuery(`*[_type == "product" && slug.current == $slug]{
   "brandName": brand->title
   }`);
+
+export const BRANDS_QUERY = defineQuery(`*[_type == 'brand'] | order(name asc) `);
+
+export const ALL_BLOGS_QUERIES = defineQuery(`*[_type == 'blog']`);

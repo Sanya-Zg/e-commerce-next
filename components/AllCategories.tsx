@@ -1,5 +1,5 @@
 'use client';
-import { getAllCategories } from '@/lib/sanity.queries';
+import { getAllCategories } from '@/sanity/queries/sanity.queries';
 import { Category } from '@/sanity.types';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
@@ -9,7 +9,11 @@ import Container from './Container';
 import { useAppDispatch } from '@/redux/hooks';
 import { setCategory } from '@/redux/features/categorySlice';
 
-const AllCategories = () => {
+type AllCategoriesProps = {
+  onCategoryClick: () => void;
+};
+
+const AllCategories = ({ onCategoryClick }: AllCategoriesProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
 
   const dispatch = useAppDispatch();
@@ -26,10 +30,10 @@ const AllCategories = () => {
     fetchData();
   }, []);
 
-  const selectCategory = (cat:string) => {
-    dispatch(setCategory(cat))
-  }
-  
+  const selectCategory = (cat: string) => {
+    dispatch(setCategory(cat));
+  };
+
   return (
     <Container>
       <div className="text-[#333333]">
@@ -42,7 +46,12 @@ const AllCategories = () => {
         <div className="flex justify-center flex-row-reverse gap-5 mt-16">
           {categories.map((category) => (
             <div className="flex flex-col" key={category._id}>
-              <button onClick={() => selectCategory(category.title)}>
+              <button
+                onClick={() => {
+                  selectCategory(category.title);
+                  onCategoryClick();
+                }}
+              >
                 <Image
                   src={
                     category.image
@@ -53,6 +62,7 @@ const AllCategories = () => {
                   loading="lazy"
                   width={381}
                   height={480}
+                  className="hover:scale-103 hoverEffect"
                 />
               </button>
 

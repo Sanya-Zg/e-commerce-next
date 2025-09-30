@@ -7,7 +7,7 @@ import {
   ProductCharacteristics,
   Rating,
 } from '@/components/index';
-import { getProductBySlug } from '@/lib/sanity.index';
+import { getProductBySlug } from '@/sanity/queries/sanity.index';
 import { Product } from '@/sanity.types';
 
 const SingleProductPage = async ({
