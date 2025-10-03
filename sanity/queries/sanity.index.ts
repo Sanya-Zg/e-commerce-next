@@ -1,9 +1,10 @@
 import { sanityFetch } from '@/sanity/lib/live';
 import {
-  ALL_BLOGS_QUERIES,
-  BRAND_QUERY,
+  ALL_BLOGS_CATEGORIES_QUERY,
+  ALL_BLOGS_QUERY,
   BRANDS_QUERY,
   get_product_by_slug,
+  LATEST_BLOGS_QUERY,
 } from '@/sanity/queries/sanity.queries';
 
 export const getProductBySlug = async (slug: string) => {
@@ -53,10 +54,30 @@ export const getCategories = async (quantity?: number) => {
 
 export const getAllBlogs = async () => {
   try {
-    const { data } = await sanityFetch({ query: ALL_BLOGS_QUERIES });
+    const { data } = await sanityFetch({ query: ALL_BLOGS_QUERY });
     return data ?? [];
   } catch (error) {
     console.log('Error fethcing all Blogs', error);
     return [];
   }
 };
+
+export const getAllBlogsCategories = async () => {
+  try {
+    const { data } = await sanityFetch({ query: ALL_BLOGS_CATEGORIES_QUERY });
+    return data ?? [];
+  } catch (error) {
+    console.log('Error fethcing all Blog\'s categories ', error);
+    return [];
+  }
+};
+
+export const getLatestBlogs = async () => {
+  try {
+    const { data } = await sanityFetch({ query: LATEST_BLOGS_QUERY });
+    return data ?? [];
+  } catch (error) {
+    console.log('Error fethcing Latest Blogs ', error);
+    return [];
+  }
+}

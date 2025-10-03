@@ -1,4 +1,4 @@
-import { Container } from '@/components';
+import { Container } from '@/components/index';
 
 const BlogPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const {slug} = await params;

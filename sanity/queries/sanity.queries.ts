@@ -34,6 +34,14 @@ export const BRAND_QUERY =
   "brandName": brand->title
   }`);
 
-export const BRANDS_QUERY = defineQuery(`*[_type == 'brand'] | order(name asc) `);
+export const BRANDS_QUERY = defineQuery(
+  `*[_type == 'brand'] | order(name asc) `
+);
 
-export const ALL_BLOGS_QUERIES = defineQuery(`*[_type == 'blog']`);
+export const ALL_BLOGS_QUERY = defineQuery(
+  `*[_type == 'blog']{..., "categories": blogcategories[]->title, 'author':author->name}`
+);
+
+export const ALL_BLOGS_CATEGORIES_QUERY = defineQuery(`*[_type == "blogcategory"] | order(title asc) { ..., "categoryAmount": count(*[_type == "blog" && references(^._id)]) }`)
+
+export const LATEST_BLOGS_QUERY = defineQuery(`*[_type == 'blog' && isLatest == true] | order(_createdAt desc) [0...4]`)

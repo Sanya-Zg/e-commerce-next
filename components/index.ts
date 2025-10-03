@@ -26,5 +26,6 @@ export { default as NumbersOfUnit } from './NumbersOfUnit';
 export { default as ProductCharacteristics } from './ProductCharacteristics';
 export { default as Shop } from './Shop';
 export { default as NoProductAvailable } from './NoProductAvailable';
+export { default as AllBlogCategories } from './AllBlogCategories';
 
 

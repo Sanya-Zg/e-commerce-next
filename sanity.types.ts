@@ -151,6 +151,13 @@ export type Blog = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  categories: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "blogcategory";
+  }>;
   author?: {
     _ref: string;
     _type: "reference";
@@ -216,6 +223,7 @@ export type Blogcategory = {
   _type: "blogcategory";
   _createdAt: string;
   _updatedAt: string;
+  categoryAmount: number;
   _rev: string;
   title?: string;
   slug?: Slug;
@@ -462,7 +470,7 @@ export type BRAND_QUERYResult = Array<{
   brandName: string | null;
 }>;
 // Variable: BRANDS_QUERY
-// Query: *[_type=='brand'] | order(name asc)
+// Query: *[_type == 'brand'] | order(name asc)
 export type BRANDS_QUERYResult = Array<{
   _id: string;
   _type: "brand";
@@ -485,12 +493,162 @@ export type BRANDS_QUERYResult = Array<{
     _type: "image";
   };
 }>;
+// Variable: ALL_BLOGS_QUERY
+// Query: *[_type == 'blog']{..., "categories": blogcategories[]->title, 'author':author->name}
+export type ALL_BLOGS_QUERYResult = Array<{
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  author: string | null;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blogcategories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "blogcategory";
+  }>;
+  publishedAt?: string;
+  isLatest?: boolean;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  categories: Array<string | null> | null;
+}>;
+// Variable: ALL_BLOGS_CATEGORIES_QUERY
+// Query: *[_type == "blogcategory"] | order(title asc) { ..., "categoryAmount": count(*[_type == "blog" && references(^._id)]) }
+export type ALL_BLOGS_CATEGORIES_QUERYResult = Array<{
+  _id: string;
+  _type: "blogcategory";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  categoryAmount: number;
+}>;
+// Variable: LATEST_BLOGS_QUERY
+// Query: *[_type == 'blog' && isLatest == true] | order(_createdAt desc) [0...4]
+export type LATEST_BLOGS_QUERYResult = Array<{
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blogcategories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "blogcategory";
+  }>;
+  publishedAt?: string;
+  isLatest?: boolean;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"product\" && slug.current == $slug]{\n  \"brandName\": brand->title\n  }": BRAND_QUERYResult;
-    "*[_type=='brand'] | order(name asc) ": BRANDS_QUERYResult;
+    "*[_type == 'brand'] | order(name asc) ": BRANDS_QUERYResult;
+    "*[_type == 'blog']{..., \"categories\": blogcategories[]->title, 'author':author->name}": ALL_BLOGS_QUERYResult;
+    "*[_type == \"blogcategory\"] | order(title asc) { ..., \"categoryAmount\": count(*[_type == \"blog\" && references(^._id)]) }": ALL_BLOGS_CATEGORIES_QUERYResult;
+    "*[_type == 'blog' && isLatest == true] | order(_createdAt desc) [0...4]": LATEST_BLOGS_QUERYResult;
   }
 }
