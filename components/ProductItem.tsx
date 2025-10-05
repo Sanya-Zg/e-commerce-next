@@ -35,7 +35,7 @@ const ProductItem = ({ product }: { product: Product }) => {
 
       <AddToWishListButton product={product} />
 
-      <div className="px-4 pt-4 pb-7 bg-[#F4F5F7]">
+      <div className="px-4 pt-4 pb-7 bg-[#F4F5F7] min-h-[275px]">
         <p className="text-2xl font-semibold">{product.name}</p>
         <p className="font-medium text-gray_3 line-clamp-1 mt-2">
           {product.description}
@@ -49,12 +49,12 @@ const ProductItem = ({ product }: { product: Product }) => {
           <span
             className={`font-bold ${product.stock === 0 ? 'text-red-primary' : 'text-brown_dark/80'}`}
           >
-            {product.stock}
+            {product.stock ? product.stock : 0}
           </span>
         </div>
-
+        
         <PriceView price={product.price} discount={product.discount} />
-        <AddToCartButton product={product} className="w-36 rounded-full" />
+        <AddToCartButton product={product} className=" rounded-full" />
       </div>
     </div>
   );

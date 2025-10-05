@@ -1,6 +1,7 @@
 import {
   AddToCartButton,
   Container,
+  HeartIcon,
   ImageView,
   NumbersOfUnit,
   PriceView,
@@ -9,6 +10,7 @@ import {
 } from '@/components/index';
 import { getProductBySlug } from '@/sanity/queries/sanity.index';
 import { Product } from '@/sanity.types';
+
 
 const SingleProductPage = async ({
   params,
@@ -64,11 +66,12 @@ const SingleProductPage = async ({
             </p>
 
             <div className="flex gap-4.5 lg:mt-33">
-              <NumbersOfUnit />
+              
               <AddToCartButton
                 product={product}
                 className={'w-full h-10 sm:h-16 mt-0'}
               />
+              <HeartIcon product={product} showProduct={true}/>
             </div>
           </div>
         </div>
