@@ -151,13 +151,6 @@ export type Blog = {
   _rev: string;
   title?: string;
   slug?: Slug;
-  categories: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "blogcategory";
-  }>;
   author?: {
     _ref: string;
     _type: "reference";
@@ -223,7 +216,6 @@ export type Blogcategory = {
   _type: "blogcategory";
   _createdAt: string;
   _updatedAt: string;
-  categoryAmount: number;
   _rev: string;
   title?: string;
   slug?: Slug;

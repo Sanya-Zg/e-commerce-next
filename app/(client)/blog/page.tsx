@@ -18,7 +18,7 @@ const AllBlogs = async () => {
   console.log(latestBlogs)
 
   return (
-    <Container className="mt-[106px]">
+    <Container className="py-[106px]">
       <div className="flex flex-col md:flex-row gap-12 md:gap-8 min-h-screen">
         <div className=" w-full flex-2 space-y-5">
           {blogs &&

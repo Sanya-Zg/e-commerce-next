@@ -19,6 +19,7 @@ const ProductItem = ({ product }: { product: Product }) => {
             alt={`Product_${product.name}`}
             width={285}
             height={301}
+            loading='lazy'
             className={`object-cover w-full max-w-[285px] max-h-[301px] ${product.stock === 0 ? 'opacity-50' : 'group-hover:scale-105'} hoverEffect`}
           />
         </Link>
