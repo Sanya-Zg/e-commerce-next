@@ -5,6 +5,7 @@ import {
   BRANDS_QUERY,
   get_product_by_slug,
   LATEST_BLOGS_QUERY,
+  SINGLE_BLOG_QUERY,
 } from '@/sanity/queries/sanity.queries';
 
 export const getProductBySlug = async (slug: string) => {
@@ -81,3 +82,17 @@ export const getLatestBlogs = async () => {
     return [];
   }
 }
+
+export const getSingleBlog = async (slug: string) => {
+  try {
+    const { data } = await sanityFetch({
+      query: SINGLE_BLOG_QUERY,
+      params: { slug },
+    });
+     if (!data) return null; 
+    return data;
+  } catch (error) {
+    console.log("Error fetching all brands:", error);
+    return [];
+  }
+};

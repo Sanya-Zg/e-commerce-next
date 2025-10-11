@@ -29,5 +29,6 @@ export { default as NoProductAvailable } from './NoProductAvailable';
 export { default as AllBlogCategories } from './AllBlogCategories';
 export { default as NoAccess } from './NoAccess';
 export { default as EmptyCart } from './EmptyCart';
+export { default as WishListProducts } from './WishListProducts';
 
 

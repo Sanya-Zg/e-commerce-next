@@ -15,7 +15,6 @@ const AllBlogs = async () => {
   const categories: ALL_BLOGS_CATEGORIES_QUERYResult = await getAllBlogsCategories();
   const latestBlogs: LATEST_BLOGS_QUERYResult = await getLatestBlogs();
   
-  console.log(latestBlogs)
 
   return (
     <Container className="py-[106px]">

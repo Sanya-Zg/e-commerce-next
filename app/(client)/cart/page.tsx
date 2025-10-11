@@ -1,4 +1,5 @@
 'use client';
+import { createCheckoutSession, Metadata } from '@/actions/createCheckoutSession';
 import {
   Container,
   EmptyCart,
@@ -86,6 +87,29 @@ const CartPage = () => {
     if (confirmed) {
       dispatch(clearCart());
       toast.success('Cart reset successfully!');
+    }
+  };
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const metadata: Metadata = {
+        orderNumber: crypto.randomUUID(),
+        customerName: user?.fullName ?? 'Unknown',
+        customerEmail: user?.emailAddresses[0].emailAddress ?? 'Unknown',
+        clerkUserId: user?.id,
+        address: selectedAddress,
+      };
+
+      const checkoutUrl = await createCheckoutSession(cartItems, metadata);
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      }
+
+    } catch (error) {
+      console.log('Error creating checkout session:', error);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -200,6 +224,8 @@ const CartPage = () => {
                         <Button
                           className="bg-gray-50 w-full font-semibold tracking-wide hoverEffect"
                           variant={'outline'}
+                          disabled={loading}
+                          onClick={handleCheckout}
                         >
                           {loading ? 'Please wait...' : 'Check Out'}
                         </Button>
@@ -213,7 +239,11 @@ const CartPage = () => {
                             <CardTitle>Delivery address</CardTitle>
                           </CardHeader>
                           <CardContent>
-                            <RadioGroup defaultValue={addresses?.find(addr => addr.default)?._id.toString()}>
+                            <RadioGroup
+                              defaultValue={addresses
+                                ?.find((addr) => addr.default)
+                                ?._id.toString()}
+                            >
                               {addresses?.map((address) => (
                                 <div
                                   key={address._id}
@@ -223,18 +253,25 @@ const CartPage = () => {
                                   <RadioGroupItem
                                     value={address?._id.toString()}
                                   />
-                                  <Label htmlFor={`address-${address._id}`} className='grid gap-1.5 flex-1'>
-                                    <span className='font-semibold'>{address.name}</span>
-                                    <span className='text-sm text-black/60'>
-                                      {address.address}, {address.city}, {" "} {address.state} {address.zip}
+                                  <Label
+                                    htmlFor={`address-${address._id}`}
+                                    className="grid gap-1.5 flex-1"
+                                  >
+                                    <span className="font-semibold">
+                                      {address.name}
+                                    </span>
+                                    <span className="text-sm text-black/60">
+                                      {address.address}, {address.city},{' '}
+                                      {address.state} {address.zip}
                                     </span>
                                   </Label>
                                 </div>
                               ))}
                             </RadioGroup>
-                            <Button className='text-gray-100 w-full'>Add New Address</Button>
+                            <Button className="text-gray-100 w-full">
+                              Add New Address
+                            </Button>
                           </CardContent>
-                         
                         </Card>
                       </div>
                     )}
@@ -243,7 +280,33 @@ const CartPage = () => {
                 {/* Cart Totals for mobile */}
                 <div className="md:hidden fixed bottom-0 left-0 w-full bg-white pt-2">
                   <div className="p-4 rounded-lg border mx-4 bg-brown_light">
-                    <h2>Cart Totals</h2>
+                    <h2 className="text-2xl font-semibold mb-4">Cart Totals</h2>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span>SubTotal</span>
+                        <PriceFormatter amount={totalPrice} />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Discount</span>
+                        <PriceFormatter amount={totalDiscount} />
+                      </div>
+                      <Separator />
+                      <div className="flex items-center justify-between font-bold text-lg">
+                        <span>Total</span>
+                        <PriceFormatter
+                          amount={subTotalPrice}
+                          className="font-bold text-lg"
+                        />
+                      </div>
+                      <Button
+                        className="bg-gray-50 w-full font-semibold tracking-wide hoverEffect"
+                        variant={'outline'}
+                        disabled={loading}
+                        onClick={handleCheckout}
+                      >
+                        {loading ? 'Please wait...' : 'Check Out'}
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>

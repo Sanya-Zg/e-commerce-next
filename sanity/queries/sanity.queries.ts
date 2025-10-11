@@ -45,3 +45,16 @@ export const ALL_BLOGS_QUERY = defineQuery(
 export const ALL_BLOGS_CATEGORIES_QUERY = defineQuery(`*[_type == "blogcategory"] | order(title asc) { ..., "categoryAmount": count(*[_type == "blog" && references(^._id)]) }`)
 
 export const LATEST_BLOGS_QUERY = defineQuery(`*[_type == 'blog' && isLatest == true] | order(_createdAt desc) [0...4]`)
+
+export const SINGLE_BLOG_QUERY =
+  defineQuery(`*[_type == "blog" && slug.current == $slug][0]{
+  ..., 
+    author->{
+    name,
+    image,
+  },
+  blogcategories[]->{
+    title,
+    "slug": slug.current,
+  },
+}`);
