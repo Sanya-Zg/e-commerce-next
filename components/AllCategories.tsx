@@ -36,7 +36,7 @@ const AllCategories = ({ onCategoryClick }: AllCategoriesProps) => {
 
   return (
     <Container>
-      <div className="text-[#333333]">
+      <div className="text-[#333333] overflow-hidden">
         <div className="text-center">
           <h2 className="font-bold text-[32px] capitalize">Browse the range</h2>
           <p className="mt-1 text-[#B0B0B0]">
@@ -48,8 +48,10 @@ const AllCategories = ({ onCategoryClick }: AllCategoriesProps) => {
             <div className="flex flex-col" key={category._id}>
               <button
                 onClick={() => {
-                  selectCategory(category.title);
-                  onCategoryClick();
+                  if (category.title) {
+                    selectCategory(category.title);
+                    onCategoryClick();
+                  }
                 }}
               >
                 <Image

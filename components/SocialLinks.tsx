@@ -27,9 +27,9 @@ export const socialLinks = [
   },
 ];
 
-const SocialLinks = ({ className, hoverEff }: { className?: string, hoverEff?: string }) => {
+const SocialLinks = ({ className, classTop, hoverEff }: { className?: string, classTop?: string, hoverEff?: string }) => {
   return (
-    <div className="mt-10">
+    <div className={cn(`mt-6 md:mt-10`, classTop)}>
       <TooltipProvider>
         <div className={cn("flex", className)}>
           {socialLinks.map((item) => (
@@ -45,7 +45,7 @@ const SocialLinks = ({ className, hoverEff }: { className?: string, hoverEff?: s
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{item.title}</p>
+                <p className='text-white font-semibold'>{item.title}</p>
               </TooltipContent>
             </Tooltip>
           ))}

@@ -65,7 +65,7 @@ const Shop = ({ categories, brands }: Props) => {
 
   return (
     <div className="border-t">
-      <Container className="mt-5">
+      <Container className="my-5">
         <div className="sticky top-0 z-10 mb-5">
           <div className="flex items-center justify-between">
             <h2 className="text-lg uppercase tracking-wide font-semibold">
@@ -98,7 +98,7 @@ const Shop = ({ categories, brands }: Props) => {
             />
           </div>
           <div className="flex-1 pt-5 border-t ">
-            <div className="h-[calc(100vh-160px)] overflow-y-auto pr-2 scrollbar-hide">
+            <div className="h-[calc(100vh+160px)] overflow-y-auto pr-2 scrollbar-hide">
               {loading ? (
                 <div className="flex justify-center items-center h-[200px] gap-4">
                   <div className="w-10 h-10 bg-neutral-50 border-6 border-amber-400 border-t-transparent border-b-transparent rounded-full animate-spin"></div>

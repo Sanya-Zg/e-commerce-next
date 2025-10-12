@@ -30,5 +30,9 @@ export { default as AllBlogCategories } from './AllBlogCategories';
 export { default as NoAccess } from './NoAccess';
 export { default as EmptyCart } from './EmptyCart';
 export { default as WishListProducts } from './WishListProducts';
+export { default as ContactForm } from './ContactForm';
+export { default as Breadcrumbs } from './Breadcrumbs';
+export { default as BreadcrumbsProduct } from './BreadcrumbsProduct';
+export { default as AllLatestBlogs } from './AllLatestBlogs';
 
 

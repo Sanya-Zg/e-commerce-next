@@ -1,4 +1,5 @@
-import { Shop } from '@/components/index';
+
+import { InformComponent, Shop, Breadcrumbs } from '@/components/index';
 import { getAllBrands, getCategories } from '@/sanity/queries/sanity.index';
 
 const ShopPage = async () => {
@@ -6,7 +7,9 @@ const ShopPage = async () => {
   const brands = await getAllBrands();
   return (
     <div>
+      <Breadcrumbs />
       <Shop categories={categories} brands={brands} />
+      <InformComponent />
     </div>
   );
 };

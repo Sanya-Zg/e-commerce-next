@@ -15,7 +15,7 @@ const MainBanner = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
           tellus, luctus nec ullamcorper mattis.
         </p>
-        <Link href="#" className='text-white bg-brown_dark font-bold uppercase px-8 md:px-18 py-3 md:py-[25px] rounded-none inline-block  text-center'>
+        <Link href="/shop" className='text-white bg-brown_dark font-bold uppercase px-8 md:px-18 py-3 md:py-[25px] rounded-none inline-block  text-center'>
   Buy now
 </Link>
       </div>
