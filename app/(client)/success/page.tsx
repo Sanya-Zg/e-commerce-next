@@ -1,14 +1,14 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Check, Home, Package, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import { useAppDispatch } from '@/redux/hooks';
 import { clearCart } from '@/redux/features/cartSlice';
 
-const SuccessPage = () => {
+const SuccessPageContent = () => {
   const dispatch = useAppDispatch();
 
   const searchParams = useSearchParams();
@@ -76,6 +76,14 @@ const SuccessPage = () => {
         </div>
       </motion.div>
     </div>
+  );
+};
+
+const SuccessPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessPageContent />
+    </Suspense>
   );
 };
 
