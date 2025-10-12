@@ -85,6 +85,8 @@ export type Product = {
   _rev: string;
   name?: string;
   slug?: Slug;
+  brandName: string;
+  categoryName: string;
   images?: Array<{
     asset?: {
       _ref: string;
@@ -216,6 +218,7 @@ export type Blogcategory = {
   _type: "blogcategory";
   _createdAt: string;
   _updatedAt: string;
+  categoryAmount:number,
   _rev: string;
   title?: string;
   slug?: Slug;

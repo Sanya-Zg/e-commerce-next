@@ -17,11 +17,10 @@ interface Props {
 
 const NumbersOfUnit = ({ product, className }: Props) => {
   const dispatch = useAppDispatch();
-  
-  const itemCount = useAppSelector((state) => product ?
-    selectItemCount(state, product._id) : 0
+
+  const itemCount = useAppSelector((state) =>
+    product ? selectItemCount(state, product._id) : 0
   );
-  const isOutOfStock = product?.stock === 0;
 
   const handleMinus = () => {
     dispatch(decreaseQuantity(product._id));

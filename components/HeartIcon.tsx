@@ -26,7 +26,7 @@ const HeartIcon = ({
     setExistingProduct(availableProduct || null);
   }, [product, favoriteProduct]);
 
-  const handleFavorite = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const handleFavorite = () => {
     if (!product) return; 
     dispatch(addToFavorite(product));
     toast.success(

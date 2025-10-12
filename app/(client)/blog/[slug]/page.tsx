@@ -8,7 +8,6 @@ import {
 } from '@/sanity.types';
 import { urlFor } from '@/sanity/lib/image';
 import {
-  getAllBlogs,
   getAllBlogsCategories,
   getLatestBlogs,
   getSingleBlog,
@@ -22,8 +21,12 @@ import { FaCalendar, FaTag, FaUser } from 'react-icons/fa';
 import AllLatestBlogs from '@/components/AllLatestBlogs';
 import { PortableText } from '@portabletext/react';
 
-const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+type Props = {
+  params: Promise<{ slug: string }>
+}
+
+const SingleBlogPage = async ({ params }: Props) => {
+  const { slug } = await params;
 
   const blogData = await getSingleBlog(slug);
   const blog = blogData as SINGLE_BLOG_QUERYResult;

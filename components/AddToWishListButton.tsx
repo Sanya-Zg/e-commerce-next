@@ -19,7 +19,7 @@ const AddToWishListButton = ({ product }: { product: Product }) => {
     setExistingProduct(availableProduct || null);
   }, [product, favoriteProduct]);
 
-  const handleFavorite = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const handleFavorite = () => {
     dispatch(addToFavorite(product));
     toast.success(
       existingProduct

@@ -1,27 +1,25 @@
-"use client";
+'use client';
 
-import { useUser } from "@clerk/nextjs";
-import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
-import { motion } from "motion/react";
-import { Check, Home, Package, ShoppingBag } from "lucide-react";
-import Link from "next/link";
-import { useAppDispatch } from "@/redux/hooks";
-import { clearCart } from "@/redux/features/cartSlice";
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
+import { motion } from 'motion/react';
+import { Check, Home, Package, ShoppingBag } from 'lucide-react';
+import Link from 'next/link';
+import { useAppDispatch } from '@/redux/hooks';
+import { clearCart } from '@/redux/features/cartSlice';
 
 const SuccessPage = () => {
   const dispatch = useAppDispatch();
-  const { user } = useUser();
-  
+
   const searchParams = useSearchParams();
-  const session_id = searchParams.get("session_id");
-  const orderNumber = searchParams.get("orderNumber");
+ 
+  const orderNumber = searchParams.get('orderNumber');
 
   useEffect(() => {
-    if (session_id) {
+    if (orderNumber) {
       dispatch(clearCart());
     }
-  }, [session_id, clearCart]);
+  }, [orderNumber, dispatch]);
   return (
     <div className="py-5 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center mx-4">
       <motion.div
@@ -33,7 +31,7 @@ const SuccessPage = () => {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
           className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
         >
           <Check className="text-white w-10 h-10" />
@@ -49,7 +47,7 @@ const SuccessPage = () => {
             be sent to your inbox shortly.
           </p>
           <p className="text-gray-700">
-            Order Number:{" "}
+            Order Number:{' '}
             <span className="text-black font-semibold">{orderNumber}</span>
           </p>
         </div>
