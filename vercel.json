@@ -1,3 +1,7 @@
 {
-  "buildCommand": "NEXT_FORCE_WEBPACK_BUILD=1 npm run build"
+  "build": {
+    "env": {
+      "NEXT_FORCE_WEBPACK_BUILD": "1"
+    }
+  }
 }
