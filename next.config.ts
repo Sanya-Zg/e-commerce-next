@@ -12,10 +12,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     globalNotFound: true,
-    serverActions: {
-    bodySizeLimit: '4mb',
-    allowedOrigins: ['*'],
-  },
     
   },
 };
