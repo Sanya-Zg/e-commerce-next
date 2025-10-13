@@ -12,8 +12,11 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     globalNotFound: true,
-    // @ts-expect-error — тимчасово, поки Next не оновить типи
-    turbo: false,
+    serverActions: {
+    bodySizeLimit: '4mb',
+    allowedOrigins: ['*'],
+  },
+    
   },
 };
 
